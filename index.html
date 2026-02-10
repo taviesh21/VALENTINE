@@ -4,21 +4,25 @@
   <title>💖 Valentine 💖</title>
   <style>
     body {
-      background: #ffccd5;
+      background-color: #ffccd5;
       text-align: center;
       font-family: Arial, sans-serif;
-      padding-top: 100px;
+      padding-top: 70px;
     }
     h1 {
       color: #c9184a;
-      font-size: 40px;
+      font-size: 38px;
+    }
+    p {
+      font-size: 22px;
+      color: #6a040f;
     }
     button {
       font-size: 22px;
       padding: 15px 25px;
       margin: 10px;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
     }
     .yes {
@@ -29,57 +33,65 @@
       background-color: #adb5bd;
       color: white;
     }
-  </style>
-</head>
-<body>
-  <h1>Will you be my Valentine? 💕</h1>
-  <button class="yes" onclick="alert('YAY!!! 💖💖💖')">YES 💘</button>
-  <button class="no" onclick="alert('Okay... I’ll still bring chocolates 🍫')">NO 😢</button>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>💖 Valentine 💖</title>
-  <style>
-    body {
-      background-color: #ffccd5;
-      text-align: center;
-      font-family: Arial, sans-serif;
-      padding-top: 100px;
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      animation: floatUp 4s linear infinite;
     }
-    h1 {
-      color: #c9184a;
-      font-size: 40px;
-    }
-    button {
-      font-size: 20px;
-      padding: 15px 25px;
-      margin: 10px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-    .yes {
-      background-color: #ff4d6d;
-      color: white;
-    }
-    .no {
-      background-color: #adb5bd;
-      color: white;
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
     }
   </style>
 </head>
 
 <body>
-  <h1>Will you be my Valentine? 💕</h1>
 
-  <button class="yes" onclick="alert('YAY!!! 💖💖💖')">
-    YES 💘
-  </button>
+  <h1>Lallu 💕</h1>
+  <p>I have something important to ask you… 💌</p>
+  <h1>Will you be my Valentine? 💖</h1>
 
-  <button class="no" onclick="alert('Okay... I’ll still bring chocolates 🍫')">
-    NO 😢
-  </button>
+  <button class="yes" onclick="yesClicked()">YES 💘</button>
+  <button class="no" id="noBtn">NO 😢</button>
+
+  <script>
+    function yesClicked() {
+      document.body.innerHTML = `
+        <h1 style="color:#c9184a;">YAY LALLU!!! 💖</h1>
+        <p style="font-size:24px;">
+          Kaise mujhe tum mil gayi… 🥹❤️<br><br>
+          You make my world brighter ✨<br>
+          Happy Valentine’s Day 💕
+        </p>
+
+        <iframe width="0" height="0"
+          src="https://www.youtube.com/embed/DuF5rE6M7sA?autoplay=1"
+          frameborder="0"
+          allow="autoplay">
+        </iframe>
+      `;
+    }
+
+    const noBtn = document.getElementById("noBtn");
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.position = "absolute";
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }, 600);
+  </script>
+
 </body>
 </html>
+
